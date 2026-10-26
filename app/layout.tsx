@@ -20,8 +20,8 @@ export const metadata: Metadata = {
   generator: 'v0.app',
   metadataBase: new URL('https://kynetic-solutions.ovh'),
   icons: {
-    icon: '/icon.svg',
-    apple: '/images/kynetic-logo.png',
+    icon: '/icon.png',
+    apple: '/apple-icon.png',
   },
 }
 
@@ -45,7 +45,7 @@ export default function RootLayout({
       className={`${geist.variable} ${geistMono.variable} ${instrument.variable}`}
     >
       <body className="antialiased">
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+        <ThemeProvider>
           {children}
         </ThemeProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}

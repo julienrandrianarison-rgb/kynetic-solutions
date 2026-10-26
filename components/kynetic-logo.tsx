@@ -2,23 +2,35 @@ import { useId } from "react"
 import { cn } from "@/lib/utils"
 
 export function KyneticLogo({ className }: { className?: string }) {
-  const gradientId = useId()
+  const id = useId()
+  const outerId = `${id}-outer`
+  const innerId = `${id}-inner`
 
   return (
-    <svg viewBox="0 0 40 40" className={cn("size-9 shrink-0", className)} aria-hidden="true">
-      <defs>
-        <linearGradient id={gradientId} x1="8" y1="32" x2="32" y2="8" gradientUnits="userSpaceOnUse">
-          <stop offset="0" stopColor="#3b82f6" />
-          <stop offset="1" stopColor="#a855f7" />
-        </linearGradient>
-      </defs>
-      <rect width="40" height="40" rx="10" fill="#140f2e" />
-      <g fill={`url(#${gradientId})`}>
-        <rect x="10" y="9" width="5" height="22" rx="1.2" />
-        <path d="M15 22.6 25.2 12.4 27.8 15 17.6 25.2Z" />
-        <path d="M21.5 9.5H31V19Z" />
-        <path d="M19.4 21.2 22.6 18 31 28.4 28.6 31H27.4Z" />
-      </g>
-    </svg>
+    <span
+      aria-hidden="true"
+      className={cn(
+        "flex size-9 shrink-0 items-center justify-center rounded-[28%] bg-card shadow-sm ring-1 ring-border",
+        className,
+      )}
+    >
+      <svg viewBox="0 0 256 256" className="size-[62%]">
+        <defs>
+          <linearGradient id={outerId} x1="0" y1="0" x2="0" y2="256" gradientUnits="userSpaceOnUse">
+            <stop offset="0" style={{ stopColor: "var(--highlight)" }} />
+            <stop offset="1" style={{ stopColor: "var(--primary)" }} />
+          </linearGradient>
+          <linearGradient id={innerId} x1="75" y1="195" x2="225" y2="0" gradientUnits="userSpaceOnUse">
+            <stop offset="0" style={{ stopColor: "var(--primary)" }} />
+            <stop offset="1" style={{ stopColor: "var(--highlight)" }} />
+          </linearGradient>
+        </defs>
+        <path d="M0 0H128L98 35H42V225L0 256Z" style={{ fill: `url(#${outerId})` }} />
+        <path d="M0 256L42 225H130V256Z" style={{ fill: "var(--secondary-foreground)" }} />
+        <path d="M75 90L165 0H225V45L110 160V195H75Z" style={{ fill: `url(#${innerId})` }} />
+        <path d="M125 135H160L190 170V220L160 185H125Z" style={{ fill: "var(--secondary-foreground)" }} />
+        <path d="M170 256L220 215V170H256V215L215 256Z" style={{ fill: "var(--highlight)" }} />
+      </svg>
+    </span>
   )
 }

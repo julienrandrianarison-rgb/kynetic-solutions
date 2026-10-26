@@ -1,31 +1,35 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { Menu, X } from "lucide-react"
 import { KyneticLogo } from "@/components/kynetic-logo"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { cn } from "@/lib/utils"
 
 const links = [
-  { href: "#services", label: "Services" },
-  { href: "#demarche", label: "Démarche" },
-  { href: "#portfolio", label: "Portfolio" },
-  { href: "#a-propos", label: "Qui sommes-nous" },
-  { href: "#recrutement", label: "Nous rejoindre" },
+  { href: "/#services", label: "Services" },
+  { href: "/#demarche", label: "Démarche" },
+  { href: "/portfolio", label: "Portfolio" },
+  { href: "/qui-sommes-nous", label: "Qui sommes-nous" },
+  { href: "/nous-rejoindre", label: "Nous rejoindre" },
   { href: "#contact", label: "Contact" },
 ]
 
 export function SiteHeader() {
+  const pathname = usePathname()
+  const isHome = pathname === "/"
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const solid = scrolled || menuOpen
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > window.innerHeight * 0.75)
+    const onScroll = () => setScrolled(window.scrollY > (isHome ? window.innerHeight * 0.75 : 320))
     onScroll()
     window.addEventListener("scroll", onScroll, { passive: true })
     return () => window.removeEventListener("scroll", onScroll)
-  }, [])
+  }, [isHome])
 
   return (
     <header
@@ -37,7 +41,7 @@ export function SiteHeader() {
       )}
     >
       <div className="container-wide flex h-16 items-center justify-between gap-4">
-        <a href="#" className="flex items-center gap-2.5" aria-label="Kynetic Solutions, accueil">
+        <Link href="/" className="flex items-center gap-2.5" aria-label="Kynetic Solutions, accueil">
           <KyneticLogo />
           <span className="flex flex-col gap-1 leading-none">
             <span className="text-sm font-semibold tracking-tight">Kynetic Solutions</span>
@@ -45,7 +49,7 @@ export function SiteHeader() {
               {"L'IA qui met votre entreprise en mouvement"}
             </span>
           </span>
-        </a>
+        </Link>
 
         <nav
           aria-label="Navigation principale"
@@ -55,13 +59,18 @@ export function SiteHeader() {
           )}
         >
           {links.map((link) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
-              className={cn("whitespace-nowrap transition-colors", solid ? "hover:text-foreground" : "hover:text-white")}
+              aria-current={pathname === link.href ? "page" : undefined}
+              className={cn(
+                "whitespace-nowrap transition-colors",
+                solid ? "hover:text-foreground" : "hover:text-white",
+                pathname === link.href && "font-medium text-foreground",
+              )}
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
@@ -99,13 +108,13 @@ export function SiteHeader() {
           <ul className="container-wide flex flex-col py-4">
             {links.map((link) => (
               <li key={link.href}>
-                <a
+                <Link
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
                   className="block rounded-xl px-3 py-3 text-base font-medium transition-colors hover:bg-muted"
                 >
                   {link.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
