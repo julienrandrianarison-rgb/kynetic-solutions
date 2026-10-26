@@ -14,9 +14,9 @@ const instrument = Instrument_Serif({
 })
 
 export const metadata: Metadata = {
-  title: 'Catalogue des services IA | Kynetic Solutions',
+  title: 'Services IA | Kynetic Solutions',
   description:
-    "Conseil, automatisation, agents IA, données, développement, formation et maintenance : le catalogue complet des services IA de Kynetic Solutions, ESN au service des entreprises à l'international.",
+    "Conseil, automatisation, agents IA, données, développement, formation et maintenance : l'ensemble des services IA de Kynetic Solutions, ESN au service des entreprises à l'international.",
   generator: 'v0.app',
   metadataBase: new URL('https://kynetic-solutions.ovh'),
   icons: {
