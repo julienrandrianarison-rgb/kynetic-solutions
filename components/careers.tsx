@@ -8,11 +8,11 @@ const perks = [
 ]
 
 const jobs = [
-  { title: "Consultant·e IA & transformation", type: "CDI", location: "Paris / Hybride" },
-  { title: "Ingénieur·e IA générative (LLM, RAG)", type: "CDI", location: "Paris / Hybride" },
+  { title: "Consultant·e IA & transformation", type: "CDI", location: "Antananarivo / Hybride" },
+  { title: "Ingénieur·e IA générative (LLM, RAG)", type: "CDI", location: "Antananarivo / Hybride" },
   { title: "Data engineer", type: "CDI", location: "Remote France" },
-  { title: "Développeur·se full-stack TypeScript", type: "CDI", location: "Paris / Hybride" },
-  { title: "Alternance : assistant·e chef de projet IA", type: "Alternance", location: "Paris" },
+  { title: "Développeur·se full-stack TypeScript", type: "CDI", location: "Antananarivo / Hybride" },
+  { title: "Alternance : assistant·e chef de projet IA", type: "Alternance", location: "Antananarivo" },
 ]
 
 const applyHref = (subject: string) =>
