@@ -10,7 +10,7 @@ const perks = [
 const jobs = [
   { title: "Consultant·e IA & transformation", type: "CDI", location: "Antananarivo / Hybride" },
   { title: "Ingénieur·e IA générative (LLM, RAG)", type: "CDI", location: "Antananarivo / Hybride" },
-  { title: "Data engineer", type: "CDI", location: "Remote France" },
+  { title: "Data engineer", type: "CDI", location: "Remote" },
   { title: "Développeur·se full-stack TypeScript", type: "CDI", location: "Antananarivo / Hybride" },
   { title: "Alternance : assistant·e chef de projet IA", type: "Alternance", location: "Antananarivo" },
 ]
